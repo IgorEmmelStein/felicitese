@@ -1,0 +1,23 @@
+<?php
+/**
+ * Script de Exclusão de Publicação - Painel Administrativo
+ * Projeto: Clube Felicite-se - IFSul
+ */
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+require_once __DIR__ . '/../../config/conexao.php';
+require_once __DIR__ . '/../../controllers/PostController.php';
+
+$controller = new PostController($pdo);
+$id = $_GET['id'] ?? null;
+
+if ($id) {
+    $controller->deletar($id);
+} else {
+    header("Location: index.php");
+    exit;
+}
