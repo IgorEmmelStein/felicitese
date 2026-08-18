@@ -1,6 +1,6 @@
 <?php
 /**
- * Componente Base: Footer (Fechamento do HTML e Rodapé)
+ * Componente Base: Footer (Rodapé)
  * Projeto: Clube Felicite-se
  */
 ?>

@@ -6,14 +6,11 @@
 require_once __DIR__ . '/config/conexao.php';
 require_once __DIR__ . '/controllers/PostController.php';
 
-// Define o título da página
 $pageTitle = "Central de Conteúdo - Clube Felicite-se";
 
-// Busca os posts via controlador
 $controller = new PostController($pdo);
 $posts = $controller->listarPublicos();
 
-// 1. O header.php já abre <html>, <head>, <link do CSS>, <body>, <header> e o <main class="container">
 include_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -35,7 +32,7 @@ include_once __DIR__ . '/includes/header.php';
                     <p><?= mb_strimwidth(strip_tags($post['conteudo']), 0, 120, '...') ?></p>
                 </div>
                 <div class="card-footer">
-                    <a href="artigo.php?id=<?= $post['id'] ?>" class="btn-ler-mais">Ler Artigo Completo</a>
+                    <a href="/felicitese/artigo.php?id=<?= $post['id'] ?>" class="btn-ler-mais">Ler Artigo Completo</a>
                 </div>
             </article>
         <?php endforeach; ?>
@@ -45,6 +42,5 @@ include_once __DIR__ . '/includes/header.php';
 </div>
 
 <?php
-// 2. O footer.php fecha o </main>, o </footer>, o </body> e o </html>
 include_once __DIR__ . '/includes/footer.php';
 ?>

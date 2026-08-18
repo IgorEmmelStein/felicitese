@@ -1,4 +1,240 @@
 /* ==========================================================
+   Variáveis Globais e Identidade Visual (Brand Kit)
+   ========================================================== */
+:root {
+    --azul-felicite: #005691;
+    --azul-hover: #003e6b;
+    --azul-claro: #e8f1f8;
+    --texto-principal: #2d3748;
+    --texto-secundario: #718096;
+    --bg-fundo: #f8fafc;
+    --bg-admin: #f1f5f9;
+    --branco: #ffffff;
+    --borda-cinza: #e2e8f0;
+    --sucesso: #28a745;
+    --perigo: #dc3545;
+    --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --sombra-card: 0 10px 15px -3px rgba(0, 0, 0, 0.07);
+    --radius: 8px;
+}
+
+/* ==========================================================
+   Reset e Configurações Base
+   ========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: var(--bg-fundo);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--azul-felicite);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--azul-hover);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+main.container {
+    flex: 1;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* ==========================================================
+   Cabeçalho (Header) e Navegação
+   ========================================================== */
+.site-header {
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--borda-cinza);
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.logo a {
+    color: var(--azul-felicite);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-menu a {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.btn-login {
+    background-color: var(--azul-claro);
+    color: var(--azul-felicite) !important;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #d0e2f2;
+}
+
+/* ==========================================================
+   Central de Conteúdo (Blog Público)
+   ========================================================== */
+.hero-blog {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 10px;
+}
+
+.hero-blog h2 {
+    font-size: 2.2rem;
+    color: var(--azul-felicite);
+    margin-bottom: 10px;
+}
+
+.hero-blog p {
+    color: var(--texto-secundario);
+    font-size: 1.1rem;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card-post {
+    background: var(--branco);
+    border-radius: var(--radius);
+    border: 1px solid var(--borda-cinza);
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-post:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+
+.card-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borda-cinza);
+}
+
+.tag-categoria {
+    background-color: var(--azul-claro);
+    color: var(--azul-felicite);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.data-publicacao {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+.card-body {
+    padding: 20px;
+    flex: 1;
+}
+
+.card-body h3 {
+    font-size: 1.25rem;
+    color: var(--azul-felicite);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.card-body p {
+    color: var(--texto-principal);
+    font-size: 0.95rem;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background-color: #fafbfc;
+    border-top: 1px solid var(--borda-cinza);
+}
+
+/* ==========================================================
+   Botões Globais
+   ========================================================== */
+.btn-ler-mais {
+    display: inline-block;
+    color: var(--azul-felicite);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-salvar {
+    background-color: var(--azul-felicite);
+    color: var(--branco) !important;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+.btn-salvar:hover {
+    background-color: var(--azul-hover);
+}
+
+.sem-posts {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--texto-secundario);
+    font-size: 1.1rem;
+    padding: 40px;
+}
+
+/* ==========================================================
    Módulo de Autenticação (Login)
    ========================================================== */
 .login-body {
@@ -10,56 +246,70 @@
 }
 
 .login-container {
-    max-width: 400px;
+    max-width: 420px;
     width: 100%;
+    background: var(--branco);
+    padding: 35px 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra-card);
+    border: 1px solid var(--borda-cinza);
 }
 
 .login-titulo {
     text-align: center;
     color: var(--azul-felicite);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
 }
 
 .login-subtitulo {
     text-align: center;
-    color: #666;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
 }
 
 .alerta-erro {
-    background-color: #F8D7DA;
-    color: #721C24;
-    padding: 10px;
+    background-color: #fde8e8;
+    color: #9b1c1c;
+    border-left: 4px solid var(--perigo);
+    padding: 12px 15px;
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 0.9rem;
 }
 
 .btn-full {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .login-footer-link {
     text-align: center;
-    margin-top: 20px;
-}
-
-.login-footer-link a {
-    font-size: 0.85rem;
+    margin-top: 25px;
 }
 
 /* ==========================================================
-   Painel Administrativo - Dashboard e Tabelas
+   Painel Administrativo - Dashboard e Formulários
    ========================================================== */
+.admin-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: var(--branco);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--borda-cinza);
+    box-shadow: var(--sombra);
+}
+
 .admin-dashboard-container {
     max-width: 1000px;
     margin: 40px auto;
     background: var(--branco);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     border: 1px solid var(--borda-cinza);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: var(--sombra);
 }
 
 .admin-welcome {
@@ -73,7 +323,7 @@
 }
 
 .admin-welcome p {
-    color: #666;
+    color: var(--texto-secundario);
 }
 
 .admin-acoes-rapidas {
@@ -109,11 +359,11 @@
 
 .btn-acao {
     text-decoration: none;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-size: 0.85rem;
-    font-weight: 500;
-    margin-right: 5px;
+    font-weight: 600;
+    margin-right: 6px;
     display: inline-block;
 }
 
@@ -127,10 +377,68 @@
 }
 
 .btn-acao.excluir {
-    background-color: #F8D7DA;
-    color: #721C24;
+    background-color: #fde8e8;
+    color: #9b1c1c;
 }
 
 .btn-acao.excluir:hover {
-    background-color: #f5c6cb;
+    background-color: #fbd5d5;
+}
+
+/* ==========================================================
+   Formulários (post-criar, post-editar, login)
+   ========================================================== */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--texto-principal);
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--borda-cinza);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--azul-felicite);
+    box-shadow: 0 0 0 3px rgba(0, 86, 145, 0.15);
+}
+
+.form-group small {
+    margin-top: 6px;
+    color: var(--texto-secundario);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================
+   Rodapé (Footer)
+   ========================================================== */
+.site-footer {
+    background-color: var(--branco);
+    border-top: 1px solid var(--borda-cinza);
+    padding: 20px 0;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    margin-top: auto;
 }

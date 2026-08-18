@@ -5,6 +5,7 @@
  */
 session_start();
 require_once __DIR__ . '/../../config/conexao.php'; 
+require_once __DIR__ . '/config/conexao.php';
 
 $erro = '';
 
@@ -71,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="login-footer-link">
-            <a href="../../blog.php" class="btn-ler-mais">← Voltar para a Central de Conteúdo</a>
+            <a href="blog.php" class="btn-ler-mais">← Voltar para a Central de Conteúdo</a>
         </div>
     </div>
 
