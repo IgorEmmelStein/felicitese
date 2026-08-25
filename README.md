@@ -1,6 +1,6 @@
 ## Organização do projeto
 
-/clube-felicite-se
+/Felicite-se
 │
 ├── /assets                # CSS, JS e Brand Kit
 │   ├── /css

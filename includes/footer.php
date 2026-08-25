@@ -1,14 +1,14 @@
 <?php
 /**
  * Componente Base: Footer (Rodapé)
- * Projeto: Clube Felicite-se
+ * Projeto: Felicite-se
  */
 ?>
     </main>
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 Clube Felicite-se - IFSul Campus Venâncio Aires</p>
+            <p>&copy; 2026 Felicite-se - IFSul Campus Venâncio Aires</p>
         </div>
     </footer>
 

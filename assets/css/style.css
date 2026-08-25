@@ -48,7 +48,7 @@ a:hover {
 }
 
 .container {
-    max-width: 1100px;
+    height: auto;
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
@@ -116,8 +116,8 @@ main.container {
    ========================================================== */
 .hero-blog {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 30px 10px;
+    margin-bottom: 25px;
+    padding: 25px 10px 10px;
 }
 
 .hero-blog h2 {
@@ -129,6 +129,201 @@ main.container {
 .hero-blog p {
     color: var(--texto-secundario);
     font-size: 1.1rem;
+}
+
+/* ==========================================================
+   Barra de Busca e Filtro de Categorias
+   ========================================================== */
+.busca-filtro-secao {
+    max-width: 900px;
+    margin: 0 auto 35px auto;
+}
+
+.form-busca-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.busca-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--branco);
+    border: 1px solid var(--borda-cinza);
+    border-radius: 50px;
+    padding: 6px 8px 6px 18px;
+    box-shadow: var(--sombra);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.busca-input-wrapper:focus-within {
+    border-color: var(--azul-felicite);
+    box-shadow: 0 0 0 3px rgba(0, 86, 145, 0.15);
+}
+
+.icone-busca {
+    width: 20px;
+    height: 20px;
+    color: var(--texto-secundario);
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.input-busca {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--texto-principal);
+    background: transparent;
+}
+
+.input-busca::placeholder {
+    color: #a0aec0;
+}
+
+.btn-busca {
+    background-color: var(--azul-felicite);
+    color: var(--branco);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-busca:hover {
+    background-color: var(--azul-hover);
+}
+
+.btn-limpar-busca {
+    background-color: #f1f5f9;
+    color: var(--texto-secundario);
+    border: 1px solid var(--borda-cinza);
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-left: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-limpar-busca:hover {
+    background-color: #fee2e2;
+    color: var(--perigo);
+    border-color: #fca5a5;
+}
+
+/* Pílulas de Categoria */
+.categorias-pills {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.pill-categoria {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background-color: var(--branco);
+    color: var(--texto-principal);
+    border: 1px solid var(--borda-cinza);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.pill-categoria:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-felicite);
+    border-color: var(--azul-felicite);
+    transform: translateY(-1px);
+}
+
+.pill-categoria.active {
+    background-color: var(--azul-felicite);
+    color: var(--branco);
+    border-color: var(--azul-felicite);
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 86, 145, 0.3);
+}
+
+.pill-count {
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+.pill-categoria.active .pill-count {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+/* Informações do Filtro Ativo */
+.filtro-ativo-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: var(--azul-claro);
+    color: var(--azul-felicite);
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 86, 145, 0.15);
+}
+
+.link-remover-filtros {
+    font-weight: 600;
+    text-decoration: underline;
+    color: var(--azul-felicite);
+}
+
+.link-remover-filtros:hover {
+    color: var(--azul-hover);
+}
+
+/* Feedback para quando não encontrar posts */
+.sem-posts-card {
+    text-align: center;
+    grid-column: 1 / -1;
+    background: var(--branco);
+    border: 1px dashed var(--borda-cinza);
+    border-radius: var(--radius);
+    padding: 50px 20px;
+    margin: 20px 0;
+}
+
+.sem-posts-icone {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+}
+
+.sem-posts-card h3 {
+    color: var(--azul-felicite);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.sem-posts-card p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    max-width: 450px;
+    margin: 0 auto 20px auto;
 }
 
 .posts-grid {
@@ -161,6 +356,61 @@ main.container {
     border-bottom: 1px solid var(--borda-cinza);
 }
 
+/* Placeholder compacto com gradiente e ícone menor */
+.card-post-placeholder {
+    width: 100%;
+    height: 120px; /* altura reduzida */
+    background: linear-gradient(135deg, #005691 0%, #0084d6 50%, #4facfe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brilho decorativo menor */
+.card-post-placeholder::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Ícone reduzido */
+.placeholder-icon {
+    width: 28px;
+    height: 28px;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    transition: transform 0.2s ease;
+}
+
+.card-post:hover .placeholder-icon {
+    transform: scale(1.08);
+}
+
+/* Imagem do card no blog */
+.card-post-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Imagem de destaque dentro do artigo */
+.artigo-img-destaque {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--borda-cinza);
+    display: block;
+    margin-bottom: 25px;
+}
+
 .tag-categoria {
     background-color: var(--azul-claro);
     color: var(--azul-felicite);
@@ -169,6 +419,13 @@ main.container {
     padding: 4px 10px;
     border-radius: 20px;
     text-transform: uppercase;
+    display: inline-block;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tag-categoria:hover {
+    background-color: var(--azul-felicite);
+    color: var(--branco);
 }
 
 .data-publicacao {
@@ -279,6 +536,17 @@ main.container {
     font-size: 0.9rem;
 }
 
+.alerta-sucesso {
+    background-color: #def7ec;
+    color: #03543f;
+    border-left: 4px solid var(--sucesso);
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .btn-full {
     width: 100%;
     margin-top: 15px;
@@ -328,6 +596,67 @@ main.container {
 
 .admin-acoes-rapidas {
     margin-bottom: 30px;
+}
+
+/* Barra de Ferramentas / Filtros no Admin */
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--borda-cinza);
+}
+
+.admin-busca-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
+}
+
+.admin-input-busca {
+    padding: 9px 14px;
+    border: 1px solid var(--borda-cinza);
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    min-width: 240px;
+    flex: 1;
+    max-width: 380px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-input-busca:focus {
+    border-color: var(--azul-felicite);
+    box-shadow: 0 0 0 3px rgba(0, 86, 145, 0.15);
+}
+
+.admin-select-filtro {
+    padding: 9px 12px;
+    border: 1px solid var(--borda-cinza);
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    background-color: var(--branco);
+    outline: none;
+    cursor: pointer;
+}
+
+.admin-select-filtro:focus {
+    border-color: var(--azul-felicite);
+}
+
+.badge-contagem {
+    background-color: var(--azul-claro);
+    color: var(--azul-felicite);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-left: 8px;
 }
 
 .admin-secao-tabela h3 {

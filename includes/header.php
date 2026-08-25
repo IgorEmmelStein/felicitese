@@ -1,9 +1,9 @@
 <?php
 /**
  * Componente Base: Header (Cabeçalho e Abertura do HTML)
- * Projeto: Clube Felicite-se
+ * Projeto: Felicite-se
  */
-$pageTitle = $pageTitle ?? 'Clube Felicite-se - IFSul';
+$pageTitle = $pageTitle ?? 'Felicite-se - IFSul';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,7 +17,7 @@ $pageTitle = $pageTitle ?? 'Clube Felicite-se - IFSul';
 
     <header class="site-header">
         <div class="container header-container">
-            <h1 class="logo"><a href="blog.php">Clube Felicite-se</a></h1>
+            <h1 class="logo"><a href="blog.php">Felicite-se</a></h1>
             <nav class="nav-menu">
                 <a href="blog.php">Início</a>
                 <a href="blog.php">Central de Conteúdo</a>
