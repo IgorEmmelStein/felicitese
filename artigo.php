@@ -47,7 +47,13 @@ $srcImagem = $temImagem
     </div>
 
     <div class="artigo-conteudo" style="font-size: 1.05rem; line-height: 1.8; color: var(--texto-principal); margin-bottom: 30px;">
-        <?= nl2br($artigo['conteudo']) ?>
+        <?php
+        // Permite tags seguras de formatação (negrito, itálico, sublinhado, links, listas e parágrafos)
+        $conteudoFormatado = strip_tags($artigo['conteudo'], '<p><br><strong><b><em><i><u><a><ul><ol><li>');
+        // Garante que links externos abram em nova aba com rel seguro
+        $conteudoFormatado = preg_replace('/<a\s+(?!.*?target=)/i', '<a target="_blank" rel="noopener noreferrer" ', $conteudoFormatado);
+        echo $conteudoFormatado;
+        ?>
     </div>
 
     <?php if (!empty($artigo['pdf_anexo'])): ?>

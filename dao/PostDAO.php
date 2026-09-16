@@ -19,9 +19,10 @@ class PostDAO {
      * Lista publicações com suporte a busca textual por palavra-chave e filtro de categoria
      */
     public function listarTodos($busca = null, $categoriaId = null) {
-        $sql = "SELECT p.*, c.nome AS categoria_nome 
+        $sql = "SELECT p.*, c.nome AS categoria_nome, u.nome AS autor_nome 
                 FROM posts p 
                 LEFT JOIN categorias c ON p.categoria_id = c.id 
+                LEFT JOIN usuarios u ON p.autor_id = u.id 
                 WHERE 1=1";
         
         $parametros = [];

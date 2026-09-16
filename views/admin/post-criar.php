@@ -33,6 +33,8 @@ $pageTitle = "Nova Publicação - Painel Felicite-se";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Quill.js CDN (Tema Snow) -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 <body class="login-body">
 
@@ -42,7 +44,7 @@ $pageTitle = "Nova Publicação - Painel Felicite-se";
             <a href="index.php" class="btn-acao editar">← Voltar ao Painel</a>
         </div>
 
-        <form action="post-criar.php" method="POST" enctype="multipart/form-data">
+        <form action="post-criar.php" method="POST" enctype="multipart/form-data" id="form-post">
             
             <div class="form-group">
                 <label for="titulo">Título da Publicação: *</label>
@@ -63,8 +65,12 @@ $pageTitle = "Nova Publicação - Painel Felicite-se";
             </div>
 
             <div class="form-group">
-                <label for="conteudo">Texto / Conteúdo do Artigo: *</label>
-                <textarea id="conteudo" name="conteudo" rows="8" required placeholder="Escreva o artigo ou resumo do evento..."></textarea>
+                <label for="editor">Texto / Conteúdo do Artigo: *</label>
+                <!-- Editor Visual Quill -->
+                <div id="editor-container" style="min-height: 220px; background: #fff; font-size: 1rem; border-bottom-left-radius: var(--radius); border-bottom-right-radius: var(--radius);"></div>
+                <!-- Campo oculto para enviar o HTML ao backend -->
+                <input type="hidden" id="conteudo" name="conteudo" required>
+                <small>Utilize a barra de ferramentas para formatar em <strong>negrito</strong>, <em>itálico</em> ou adicionar <u>links</u>.</small>
             </div>
 
             <div class="form-group">
@@ -73,17 +79,43 @@ $pageTitle = "Nova Publicação - Painel Felicite-se";
                 <small>Aparece em destaque nos cards da Central de Conteúdo e no cabeçalho do artigo.</small>
             </div>
 
-            <div class="form-group">
-                <label for="pdf_anexo">Documento PDF Anexo (Opcional - Máx. 10MB):</label>
-                <input type="file" id="pdf_anexo" name="pdf_anexo" accept="application/pdf">
-                <small>Permite disponibilizar artigos científicos, guias ou cartilhas para download.</small>
-            </div>
-
             <div style="margin-top: 30px;">
                 <button type="submit" class="btn-salvar btn-full">Publicar Artigo</button>
             </div>
         </form>
     </div>
 
+    <!-- Script do Quill.js -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script>
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            placeholder: 'Escreva o artigo ou resumo do evento aqui...',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    ['link'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Sincroniza o conteúdo do Quill com o input oculto antes do envio
+        const form = document.getElementById('form-post');
+        form.addEventListener('submit', function(e) {
+            const htmlContent = quill.getSemanticHTML();
+            const textContent = quill.getText().trim();
+
+            if (textContent.length === 0) {
+                e.preventDefault();
+                alert('Por favor, preencha o conteúdo do artigo antes de publicar.');
+                quill.focus();
+                return;
+            }
+
+            document.getElementById('conteudo').value = htmlContent;
+        });
+    </script>
 </body>
 </html>

@@ -46,6 +46,8 @@ $pageTitle = "Editar: " . $artigo['titulo'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Quill.js CDN (Tema Snow) -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 <body class="login-body">
 
@@ -55,7 +57,7 @@ $pageTitle = "Editar: " . $artigo['titulo'];
             <a href="index.php" class="btn-acao editar">← Voltar ao Painel</a>
         </div>
 
-        <form action="post-editar.php?id=<?= $artigo['id'] ?>" method="POST" enctype="multipart/form-data">
+        <form action="post-editar.php?id=<?= $artigo['id'] ?>" method="POST" enctype="multipart/form-data" id="form-editar">
             
             <div class="form-group">
                 <label for="titulo">Título da Publicação: *</label>
@@ -74,8 +76,12 @@ $pageTitle = "Editar: " . $artigo['titulo'];
             </div>
 
             <div class="form-group">
-                <label for="conteudo">Texto / Conteúdo do Artigo: *</label>
-                <textarea id="conteudo" name="conteudo" rows="8" required><?= htmlspecialchars($artigo['conteudo']) ?></textarea>
+                <label for="editor">Texto / Conteúdo do Artigo: *</label>
+                <!-- Editor Visual Quill com o conteúdo existente -->
+                <div id="editor-container" style="min-height: 220px; background: #fff; font-size: 1rem; border-bottom-left-radius: var(--radius); border-bottom-right-radius: var(--radius);"><?= $artigo['conteudo'] ?></div>
+                <!-- Campo oculto para enviar o HTML atualizado -->
+                <input type="hidden" id="conteudo" name="conteudo" required>
+                <small>Utilize a barra de ferramentas para formatar em <strong>negrito</strong>, <em>itálico</em> ou adicionar <u>links</u>.</small>
             </div>
 
             <!-- Imagem de Capa com Pré-visualização -->
@@ -91,23 +97,43 @@ $pageTitle = "Editar: " . $artigo['titulo'];
                 <small>Envie um novo arquivo apenas se desejar substituir a imagem atual (Máx. 2MB).</small>
             </div>
 
-            <!-- Arquivo PDF com Status Atual -->
-            <div class="form-group">
-                <label for="pdf_anexo">Documento PDF Anexo:</label>
-                <?php if (!empty($artigo['pdf_anexo'])): ?>
-                    <div style="margin-bottom: 10px; font-size: 0.9rem;">
-                        <span>📄 Arquivo atual: <strong><?= htmlspecialchars($artigo['pdf_anexo']) ?></strong></span>
-                    </div>
-                <?php endif; ?>
-                <input type="file" id="pdf_anexo" name="pdf_anexo" accept="application/pdf">
-                <small>Envie um novo arquivo apenas se desejar substituir o documento atual (Máx. 10MB).</small>
-            </div>
-
             <div style="margin-top: 30px;">
                 <button type="submit" class="btn-salvar btn-full">Salvar Alterações</button>
             </div>
         </form>
     </div>
 
+    <!-- Script do Quill.js -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script>
+        const quill = new Quill('#editor-container', {
+            theme: 'snow',
+            placeholder: 'Escreva o artigo ou resumo do evento aqui...',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    ['link'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Sincroniza o conteúdo do Quill com o input oculto antes do envio
+        const form = document.getElementById('form-editar');
+        form.addEventListener('submit', function(e) {
+            const htmlContent = quill.getSemanticHTML();
+            const textContent = quill.getText().trim();
+
+            if (textContent.length === 0) {
+                e.preventDefault();
+                alert('Por favor, preencha o conteúdo do artigo antes de salvar.');
+                quill.focus();
+                return;
+            }
+
+            document.getElementById('conteudo').value = htmlContent;
+        });
+    </script>
 </body>
 </html>

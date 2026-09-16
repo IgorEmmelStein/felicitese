@@ -1,0 +1,50 @@
+services:
+  # Servidor Web Apache + PHP 8.2
+  app:
+    build: .
+    container_name: felicitese_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_NAME: clube_felicitese
+      DB_USER: root
+      DB_PASS: root
+      BASE_URL: /
+    depends_on:
+      - db
+
+  # Banco de Dados MariaDB
+  db:
+    image: mariadb:10.6
+    container_name: felicitese_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: clube_felicitese
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  # Interface Web phpMyAdmin (opcional para gerenciar o banco pelo navegador)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: felicitese_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+

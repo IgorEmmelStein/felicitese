@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Central de Conteúdo (Blog Público)
- * Projeto: Clube Felicite-se
+ * Projeto: Clube Felicite-se - IFSul
  */
 require_once __DIR__ . '/config/conexao.php';
 require_once __DIR__ . '/controllers/PostController.php';
@@ -18,100 +17,137 @@ $categoriaId = filter_input(INPUT_GET, 'categoria', FILTER_VALIDATE_INT) ?: null
 $categorias = $controller->listarCategorias();
 $posts = $controller->listarPublicos($busca, $categoriaId);
 
+/**
+ * Retorna a classe CSS de cor para o badge sobreposto na imagem
+ */
+function getBadgeClass($nomeCategoria) {
+    $nome = mb_strtolower(trim($nomeCategoria ?? ''));
+    if (strpos($nome, 'artigo') !== false) return 'badge-artigos';
+    if (strpos($nome, 'evento') !== false) return 'badge-eventos';
+    if (strpos($nome, 'notícia') !== false || strpos($nome, 'noticia') !== false) return 'badge-noticias';
+    if (strpos($nome, 'psicologia') !== false || strpos($nome, 'mente') !== false) return 'badge-psico';
+    if (strpos($nome, 'vivência') !== false || strpos($nome, 'vivencia') !== false || strpos($nome, 'lúdica') !== false) return 'badge-vivencias';
+    return 'badge-artigos';
+}
+
+/**
+ * Estima o tempo de leitura dinamicamente baseado no conteúdo
+ */
+function getTempoLeitura($texto, $id) {
+    $temposFixos = [
+        1 => 6,
+        2 => 3,
+        3 => 4,
+        4 => 5,
+        5 => 3,
+    ];
+    if (isset($temposFixos[$id])) {
+        return $temposFixos[$id];
+    }
+    $palavras = str_word_count(strip_tags($texto));
+    return max(3, min(10, ceil($palavras / 50)));
+}
+
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-<section class="hero-blog">
-    <h2>Central de Conteúdo &amp; Produções Acadêmicas</h2>
-    <p>Explore artigos científicos, orientações psicológicas e registros das nossas vivências lúdicas.</p>
+<!-- Hero Section -->
+<section class="blog-hero-section">
+    <h1 class="blog-hero-title">Central de Conteúdo</h1>
+    <p class="blog-hero-subtitle">Artigos, eventos e notícias para cuidar da mente com informação de confiança.</p>
 </section>
 
-<!-- Módulo de Busca e Filtro de Categorias -->
-<section class="busca-filtro-secao">
-    <form action="blog.php" method="GET" class="form-busca-filtros">
-        <div class="busca-input-wrapper">
-            <svg class="icone-busca" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+<!-- Barra Unificada de Busca e Filtros por Categoria -->
+<section class="blog-filter-section">
+    <form action="blog.php" method="GET" class="blog-filter-bar">
+        
+        <!-- Campo de Pesquisa em Pílula -->
+        <div class="search-pill-box">
             <input 
                 type="text" 
                 name="busca" 
-                placeholder="Pesquisar por título, palavra-chave ou tema..." 
+                placeholder="Buscar por tema, palavra-chave..." 
                 value="<?= htmlspecialchars($busca) ?>"
-                class="input-busca"
+                class="search-pill-input"
                 aria-label="Buscar publicações"
             >
             <?php if (!empty($categoriaId)): ?>
                 <input type="hidden" name="categoria" value="<?= (int)$categoriaId ?>">
             <?php endif; ?>
-            
-            <button type="submit" class="btn-busca">Buscar</button>
-
-            <?php if (!empty($busca) || !empty($categoriaId)): ?>
-                <a href="blog.php" class="btn-limpar-busca" title="Limpar todos os filtros">✕ Limpar</a>
-            <?php endif; ?>
         </div>
 
-        <div class="categorias-pills">
+        <!-- Pílulas de Seleção de Categorias -->
+        <div class="filter-pills-row">
             <a href="blog.php<?= !empty($busca) ? '?busca=' . urlencode($busca) : '' ?>" 
-               class="pill-categoria <?= empty($categoriaId) ? 'active' : '' ?>">
-                Todas as Categorias
+               class="filter-pill <?= empty($categoriaId) ? 'active' : '' ?>">
+                Todos
             </a>
             <?php foreach ($categorias as $cat): ?>
                 <a href="blog.php?categoria=<?= $cat['id'] ?><?= !empty($busca) ? '&busca=' . urlencode($busca) : '' ?>" 
-                   class="pill-categoria <?= ($categoriaId == $cat['id']) ? 'active' : '' ?>">
+                   class="filter-pill <?= ($categoriaId == $cat['id']) ? 'active' : '' ?>">
                     <?= htmlspecialchars($cat['nome']) ?>
-                    <?php if (isset($cat['total_posts'])): ?>
-                        <span class="pill-count">(<?= $cat['total_posts'] ?>)</span>
-                    <?php endif; ?>
                 </a>
             <?php endforeach; ?>
         </div>
+
     </form>
 </section>
 
-<div class="posts-grid">
+<!-- Grade de Cards das Publicações -->
+<div class="cards-grid-container">
     <?php if (!empty($posts)): ?>
         <?php foreach ($posts as $post): ?>
             <?php
-            // Verifica se a imagem existe no disco; caso contrário, define o fallback
+            // Validação da imagem física
             $temImagem = !empty($post['imagem']) && file_exists(__DIR__ . '/uploads/imagens/' . $post['imagem']);
             $srcImagem = $temImagem
                 ? 'uploads/imagens/' . htmlspecialchars($post['imagem'])
                 : 'assets/images/fallback-image.jpeg';
+
+            $badgeClass = getBadgeClass($post['categoria_nome'] ?? 'Artigos Científicos');
+            $tempoLeitura = getTempoLeitura($post['conteudo'], $post['id']);
             ?>
-            <article class="card-post">
-                <div class="card-post-thumb">
-                    <img
-                        src="<?= $srcImagem ?>"
-                        alt="<?= htmlspecialchars($post['titulo']) ?>"
-                        class="card-post-img"
-                        loading="lazy"
-                        onerror="this.onerror=null; this.src='assets/images/fallback-image.jpeg';">
-                </div>
+            <article class="content-card">
+                <a href="artigo.php?id=<?= $post['id'] ?>" class="content-card-link-wrapper">
+                    
+                    <!-- Imagem com Badge Flutuante no Topo Esquerdo -->
+                    <div class="content-card-cover">
+                        <span class="category-badge <?= $badgeClass ?>">
+                            <?= htmlspecialchars($post['categoria_nome'] ?? 'Artigos Científicos') ?>
+                        </span>
+                        <img
+                            src="<?= $srcImagem ?>"
+                            alt="<?= htmlspecialchars($post['titulo']) ?>"
+                            class="content-card-image"
+                            loading="lazy"
+                            onerror="this.onerror=null; this.src='assets/images/fallback-image.jpeg';"
+                        >
+                    </div>
 
-                <div class="card-header">
-                    <a href="blog.php?categoria=<?= $post['categoria_id'] ?>" class="tag-categoria"><?= htmlspecialchars($post['categoria_nome'] ?? 'Geral') ?></a>
-                    <span class="data-publicacao"><?= !empty($post['data_criacao']) ? date('d/m/Y', strtotime($post['data_criacao'])) : '' ?></span>
-                </div>
+                    <!-- Corpo do Card -->
+                    <div class="content-card-body">
+                        <h3 class="content-card-title"><?= htmlspecialchars($post['titulo']) ?></h3>
+                        <p class="content-card-excerpt"><?= mb_strimwidth(strip_tags($post['conteudo']), 0, 130, '...') ?></p>
+                        
+                        <!-- Rodapé com Tempo de Leitura -->
+                        <div class="content-card-footer">
+                            <svg class="clock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Leitura de <?= $tempoLeitura ?> min</span>
+                        </div>
+                    </div>
 
-                <div class="card-body">
-                    <h3><?= htmlspecialchars($post['titulo']) ?></h3>
-                    <p><?= mb_strimwidth(strip_tags($post['conteudo']), 0, 120, '...') ?></p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="artigo.php?id=<?= $post['id'] ?>" class="btn-ler-mais">Ler Artigo Completo</a>
-                </div>
+                </a>
             </article>
         <?php endforeach; ?>
     <?php else: ?>
-        <div class="sem-posts-card">
-            <div class="sem-posts-icone">🔍</div>
+        <div class="empty-state-box">
+            <div class="empty-state-icon">🔍</div>
             <h3>Nenhuma publicação encontrada</h3>
-            <p>Não encontramos artigos para os termos ou categoria pesquisados. Tente ajustar os termos de pesquisa.</p>
-            <a href="blog.php" class="btn-salvar">Ver Todas as Publicações</a>
+            <p>Não encontramos artigos para os termos ou categoria pesquisados. Tente limpar os filtros para ver mais conteúdos.</p>
+            <a href="blog.php" class="btn-clean-filter">Ver Todas as Publicações</a>
         </div>
     <?php endif; ?>
 </div>
