@@ -12,8 +12,8 @@
                 
                 <!-- Coluna 1: Marca, Missão e Redes -->
                 <div class="footer-col brand-col">
-                    <a href="blog.php" class="brand-logo footer-logo">
-                        <img src="<?= (defined('BASE_URL') ? BASE_URL : '') ?>assets/images/felicitese-logo.png" alt="Logo Felicite-se" class="brand-logo-img">
+                    <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>index.php" class="brand-logo footer-logo" title="Felicite-se - Início">
+                        <img src="<?= (defined('BASE_URL') ? BASE_URL : '') ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
                         <span class="brand-text">Felicite<span class="brand-dash">-</span><span class="brand-accent">se</span></span>
                     </a>
                     <p class="footer-mission">
@@ -39,9 +39,9 @@
                 <div class="footer-col">
                     <h4 class="footer-col-title">Navegação</h4>
                     <ul class="footer-links">
-                        <li><a href="blog.php">Início</a></li>
-                        <li><a href="blog.php">Central de Conteúdo</a></li>
-                        <li><a href="login.php">Área do Membro</a></li>
+                        <li><a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>index.php">Início</a></li>
+                        <li><a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>blog.php">Central de Conteúdo</a></li>
+                        <li><a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>login.php">Área do Membro</a></li>
                     </ul>
                 </div>
 
@@ -50,8 +50,8 @@
                     <h4 class="footer-col-title">Contato</h4>
                     <ul class="footer-contact-list">
                         <li><a href="mailto:contato@felicite-se.org">contato@felicite-se.org</a></li>
-                        <li>(11) 4002-8922</li>
-                        <li>São Paulo, SP</li>
+                        <li>IFSul Câmpus Venâncio Aires</li>
+                        <li>Venâncio Aires, RS</li>
                     </ul>
                 </div>
 

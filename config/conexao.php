@@ -32,6 +32,18 @@ while ($tentativas < $maxTentativas) {
         break;
     } catch (PDOException $e) {
         $tentativas++;
+        // Se acesso negado com senha vazia, tenta com a senha padrão 'root'
+        if ($senha === '' && ($e->getCode() == 1045 || strpos($e->getMessage(), 'Access denied') !== false)) {
+            try {
+                $senhaTentativa = 'root';
+                $pdo = new PDO($dsn, $usuario, $senhaTentativa, $opcoes);
+                $senha = $senhaTentativa;
+                break;
+            } catch (PDOException $ePass) {
+                // Mantém senha original
+            }
+        }
+
         // Se o banco ainda não existir, tenta criá-lo
         if ($e->getCode() == 1049 || strpos($e->getMessage(), 'Unknown database') !== false) {
             try {

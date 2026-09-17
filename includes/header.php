@@ -21,17 +21,17 @@ $pageTitle = $pageTitle ?? 'Central de Conteúdo - Felicite-se';
 
     <header class="site-header">
         <div class="container header-container">
-            <a href="blog.php" class="brand-logo">
-                <img src="<?= (defined('BASE_URL') ? BASE_URL : '') ?>assets/images/felicitese-logo.png" alt="Logo Felicite-se" class="brand-logo-img">
+            <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>index.php" class="brand-logo" title="Felicite-se - Início">
+                <img src="<?= (defined('BASE_URL') ? BASE_URL : '') ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
                 <span class="brand-text">Felicite<span class="brand-dash">-</span><span class="brand-accent">se</span></span>
             </a>
 
             <nav class="nav-menu">
-                <a href="blog.php" class="nav-link">Início</a>
-                <a href="blog.php" class="nav-link-pill">Central de Conteúdo</a>
-                <a href="login.php" class="btn-member-pill">Área do Membro</a>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>index.php" class="nav-link">Início</a>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>blog.php" class="nav-link-pill">Central de Conteúdo</a>
+                <a href="<?= (defined('BASE_URL') ? BASE_URL : '') ?>login.php" class="btn-member-pill">Área do Membro</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <main class="<?= htmlspecialchars($mainClass ?? 'container') ?>">

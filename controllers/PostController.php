@@ -171,6 +171,13 @@ class PostController {
     }
 
     /**
+     * Lista as publicações mais recentes do portal
+     */
+    public function listarRecentes($limite = 3) {
+        return $this->postDAO->listarRecentes($limite);
+    }
+
+    /**
      * Retorna todas as categorias disponíveis
      */
     public function listarCategorias() {

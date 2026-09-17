@@ -138,4 +138,21 @@ class PostDAO {
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    /**
+     * Lista as publicações mais recentes com limite configurável
+     */
+    public function listarRecentes($limite = 3) {
+        $limiteVal = max(1, (int)$limite);
+        $sql = "SELECT p.*, c.nome AS categoria_nome, u.nome AS autor_nome 
+                FROM posts p 
+                LEFT JOIN categorias c ON p.categoria_id = c.id 
+                LEFT JOIN usuarios u ON p.autor_id = u.id 
+                ORDER BY p.data_criacao DESC, p.id DESC 
+                LIMIT :limite";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':limite', $limiteVal, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <!-- Logo Flutuante em Pílula Branca -->
             <div class="auth-brand-pill">
-                <img src="<?= BASE_URL ?>assets/images/felicitese-logo.png" alt="Logo Felicite-se" class="brand-logo-img">
+                <img src="<?= BASE_URL ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
                 <span class="brand-text">Felicite<span class="brand-dash">-</span><span class="brand-accent">se</span></span>
             </div>
 
