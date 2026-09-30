@@ -6,7 +6,6 @@
 session_start();
 require_once __DIR__ . '/config/conexao.php';
 
-// Inicialização e sincronização dos usuários administrativos padrão
 try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -17,7 +16,6 @@ try {
         data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
-    // Garante usuários padrão Igor Nascimento e Admin IFSul
     $stmtCheckIgor = $pdo->prepare("SELECT id, senha FROM usuarios WHERE LOWER(email) = 'igor@felicite-se.org' LIMIT 1");
     $stmtCheckIgor->execute();
     if (!$stmtCheckIgor->fetch()) {
@@ -34,10 +32,8 @@ try {
             ->execute([':senha' => $hashAdmin]);
     }
 } catch (Exception $e) {
-    // Continua
 }
 
-// Se já autenticado, redireciona para o dashboard
 if (isset($_SESSION['usuario_id'])) {
     header('Location: views/admin/index.php');
     exit;
@@ -87,6 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erro = "Por favor, preencha todos os campos.";
     }
 }
+
+$baseUrl = defined('BASE_URL') ? BASE_URL : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -94,150 +92,158 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Membro - Felicite-se</title>
-    <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css?v=2.2">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'azul-felicite': '#005691',
+              'azul-hover': '#003e6b',
+              'azul-suave': '#e0f2fe',
+              'azul-texto': '#0369a1',
+              'fundo-app': '#f8fafc'
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="<?= $baseUrl ?>assets/css/global.css">
 </head>
-<body class="auth-split-body">
+<body class="bg-fundo-app text-slate-700 font-sans antialiased">
 
-    <div class="auth-split-container">
+    <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-fundo-app">
         
-        <!-- LADO ESQUERDO: Painel Visual com Identidade, Slogan e Ícones -->
-        <div class="auth-left-panel">
-            
-            <!-- Logo Flutuante em Pílula Branca -->
-            <div class="auth-brand-pill">
-                <img src="<?= BASE_URL ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
-                <span class="brand-text">Felicite<span class="brand-dash">-</span><span class="brand-accent">se</span></span>
+        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-azul-hover text-white p-12 flex-col justify-between relative overflow-hidden">
+            <div class="relative z-10">
+                <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
+                    <span class="text-lg font-extrabold text-white">Felicite-se</span>
+                </a>
             </div>
 
-            <!-- Conteúdo Centralizado do Lado Esquerdo -->
-            <div class="auth-left-content">
-                <h1 class="auth-left-title">Um espaço seguro<br>para cuidar da<br>mente.</h1>
-                <p class="auth-left-desc">
-                    Gerencie conteúdos que ajudam jovens a entender emoções, lidar com desafios e construir equilíbrio.
+            <div class="relative z-10 max-w-lg space-y-6">
+                <span class="inline-flex items-center gap-2 bg-sky-950 text-sky-300 border border-sky-800/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                    ✨ ÁREA ADMINISTRATIVA • GESTÃO
+                </span>
+
+                <h1 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
+                    Um espaço seguro para cuidar da <span class="text-sky-300">mente</span>.
+                </h1>
+
+                <p class="p-base text-slate-200">
+                    Gerencie conteúdos que ajudam estudantes a entender emoções, lidar com desafios e <strong>construir o equilíbrio psicológico</strong> no dia a dia.
                 </p>
-
-                <!-- 3 Botões/Ícones Decorativos -->
-                <div class="auth-feature-circles">
-                    <div class="feature-circle" title="Bem-estar e Saúde Mental">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                    </div>
-                    <div class="feature-circle" title="Acolhimento e Empatia">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                        </svg>
-                    </div>
-                    <div class="feature-circle" title="Inspiração e Criatividade">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3v3m0 12v3M3 12h3m12 0h3m-2.6-6.4l-2.1 2.1m-8.6 8.6l-2.1 2.1m0-12.8l2.1 2.1m8.6 8.6l2.1 2.1"></path>
-                        </svg>
-                    </div>
-                </div>
             </div>
 
-            <!-- Rodapé Discreto no Lado Esquerdo -->
-            <div class="auth-left-footer">
-                &copy; 2026 Clube Felicite-se
+            <div class="relative z-10 text-xs font-semibold text-slate-400">
+                &copy; 2026 Clube Felicite-se &middot; IFSul Campus Venâncio Aires
             </div>
         </div>
 
-        <!-- LADO DIREITO: Formulário de Autenticação -->
-        <div class="auth-right-panel">
-            <div class="auth-form-wrapper">
+        <div class="lg:col-span-6 flex items-center justify-center p-6 sm:p-12 lg:p-16">
+            <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-clean space-y-8">
                 
-                <h2 class="auth-form-title">Bem-vindo de volta</h2>
-                <p class="auth-form-subtitle">Acesse o painel para gerenciar o Clube Felicite-se.</p>
+                <div class="space-y-2">
+                    <div class="lg:hidden mb-6">
+                        <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-2">
+                            <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
+                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                        </a>
+                    </div>
+                    <h2 class="t-h2 text-slate-900">Bem-vindo de volta</h2>
+                    <p class="p-base text-sm">
+                        Acesse o painel para <strong>gerenciar o Clube Felicite-se</strong>.
+                    </p>
+                </div>
 
                 <?php if ($erro): ?>
-                    <div class="alerta-erro">
+                    <div class="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-2xl text-xs font-bold leading-relaxed">
                         <?= htmlspecialchars($erro) ?>
                     </div>
                 <?php endif; ?>
 
-                <form action="login.php" method="POST" class="auth-main-form">
+                <form action="login.php" method="POST" class="space-y-5">
                     
-                    <!-- Campo E-mail com Ícone de Envelope -->
-                    <div class="form-group-icon">
-                        <label for="email" class="auth-label">E-mail ou usuário</label>
-                        <div class="input-icon-box">
-                            <svg class="field-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                            E-mail ou Usuário
+                        </label>
+                        <div class="relative">
                             <input 
                                 type="text" 
                                 id="email" 
                                 name="email" 
                                 value="igor@felicite-se.org" 
                                 required 
-                                placeholder="igor@felicite-se.org" 
-                                class="auth-input"
+                                placeholder="seuemail@felicite-se.org" 
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all"
                             >
+                            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
                         </div>
                     </div>
 
-                    <!-- Campo Senha com Ícone de Cadeado e Olho -->
-                    <div class="form-group-icon">
-                        <label for="senha" class="auth-label">Senha</label>
-                        <div class="input-icon-box">
-                            <svg class="field-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                    <div>
+                        <label for="senha" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                            Senha de Acesso
+                        </label>
+                        <div class="relative">
                             <input 
                                 type="password" 
                                 id="senha" 
                                 name="senha" 
                                 value="123456" 
                                 required 
-                                placeholder="123456" 
-                                class="auth-input"
+                                placeholder="••••••••" 
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all"
                             >
-                            <button type="button" class="field-icon-right-btn" id="togglePasswordBtn" title="Mostrar ou ocultar senha">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
+                            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                            </svg>
+                            <button type="button" id="togglePasswordBtn" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors" title="Mostrar/ocultar senha">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                 </svg>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Linha Lembrar de mim & Recuperar Senha -->
-                    <div class="auth-options-row">
-                        <label class="remember-label">
-                            <input type="checkbox" name="lembrar" checked>
+                    <div class="flex items-center justify-between text-xs font-semibold">
+                        <label class="inline-flex items-center gap-2 cursor-pointer text-slate-600">
+                            <input type="checkbox" name="lembrar" checked class="rounded border-slate-300 text-azul-felicite focus:ring-azul-felicite">
                             <span>Lembrar de mim</span>
                         </label>
-                        <a href="#" onclick="alert('Para redefinir a senha do ambiente acadêmico/local, utilize o login padrão: igor@felicite-se.org (senha: 123456) ou admin@ifsul.edu.br (senha: admin123).'); return false;" class="forgot-link">
+                        <a href="#" onclick="alert('Para redefinir a senha do ambiente acadêmico/local, utilize o login padrão: igor@felicite-se.org (senha: 123456) ou admin@ifsul.edu.br (senha: admin123).'); return false;" class="text-azul-felicite hover:underline">
                             Recuperar senha
                         </a>
                     </div>
 
-                    <!-- Botão Entrar -->
-                    <button type="submit" class="btn-auth-primary">Entrar</button>
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm">
+                        Entrar no Painel
+                    </button>
 
-                    <!-- Divisor Ou -->
-                    <div class="auth-divider">
-                        <span>ou</span>
+                    <div class="relative my-6 text-center">
+                        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+                        <span class="relative bg-white px-4 text-xs font-bold uppercase tracking-wider text-slate-400">ou</span>
                     </div>
 
-                    <!-- Botão Criar Conta -->
-                    <button type="button" class="btn-auth-secondary" onclick="alert('O cadastro de novos administradores pode ser realizado internamente pelo painel ou banco de dados.');">
+                    <button type="button" onclick="alert('O cadastro de novos administradores pode ser realizado internamente pelo painel ou banco de dados.');" class="w-full py-3.5 rounded-full font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 transition-all text-sm">
                         Criar Conta
                     </button>
 
                 </form>
 
-                <div style="margin-top: 25px; text-align: center;">
-                    <a href="blog.php" style="color: var(--texto-secundario); font-size: 0.88rem;">&larr; Voltar para o Site Público</a>
+                <div class="pt-2 text-center">
+                    <a href="blog.php" class="text-xs font-bold text-slate-500 hover:text-azul-felicite transition-colors inline-flex items-center gap-1">
+                        &larr; Voltar para o Site Público
+                    </a>
                 </div>
 
             </div>
@@ -245,7 +251,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
 
-    <!-- Script para alternar visibilidade da senha -->
     <script>
         const toggleBtn = document.getElementById('togglePasswordBtn');
         const passInput = document.getElementById('senha');
@@ -256,6 +261,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             });
         }
     </script>
-
 </body>
 </html>
