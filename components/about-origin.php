@@ -3,7 +3,7 @@
 <section class="py-20 bg-fundo-app border-b border-slate-200/80" id="origem">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             <div class="lg:col-span-5">
                 <div class="bg-white p-3 rounded-3xl border border-slate-200/80 ">
                     <img src="assets/images/estudantes/felicitese-aluna-orientadora-congresso-felicidade-aplicada.webp" alt="Estudos e Pesquisas do Felicite-se" class="w-full h-auto object-cover rounded-2xl" loading="lazy">
@@ -13,12 +13,12 @@
             <div class="lg:col-span-7 space-y-6">
                 <div>
                     <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 border border-amber-200/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                        FUNDAMENTAÇÃO CIENTÍFICA • PSICOLOGIA POSITIVA
+                        FUNDAMENTAÇÃO CIENTÍFICA
                     </span>
                 </div>
 
                 <h2 class="t-h2">
-                    Mergulho nos livros e a busca<br>pelo florescimento humano
+                    Inspiração para o projeto Felicite-se
                 </h2>
 
                 <p class="p-base">

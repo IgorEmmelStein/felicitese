@@ -14,7 +14,7 @@
         </h2>
 
         <p class="p-base text-purple-100 max-w-xl mx-auto">
-            Entre em contato conosco para agendar <strong>oficinas, palestras e dinâmicas vivenciais</strong> focadas na promoção do bem-estar e do florescimento humano.
+            Entre em contato conosco para agendar <strong>oficinas, palestras e dinâmicas vivenciais</strong> focadas na promoção do bem-estar.
         </p>
 
         <div class="pt-2">

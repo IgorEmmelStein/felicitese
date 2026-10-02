@@ -33,7 +33,7 @@ $heroImages = [
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
                 <div>
                     <span class="inline-flex items-center gap-2 bg-sky-950 text-sky-300 border border-sky-800/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                        PSICOLOGIA POSITIVA • FLORESCIMENTO HUMANO
+                        PSICOLOGIA POSITIVA
                     </span>
                 </div>
 

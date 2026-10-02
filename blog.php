@@ -42,16 +42,11 @@ include_once __DIR__ . '/includes/header.php';
 
 <section class="py-16 lg:py-20 bg-white border-b border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-4">
-        <div>
-            <span class="inline-flex items-center gap-2 bg-azul-suave text-azul-texto border border-sky-200/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                ✨ ACERVO PÚBLICO • PUBLICAÇÕES
-            </span>
-        </div>
         <h1 class="t-h1">
             Central de <span class="text-azul-felicite">Conteúdo</span>
         </h1>
         <p class="p-base">
-            Explore artigos, eventos e notícias para cuidar da mente com <strong>informação científica e de confiança</strong>.
+            Explore artigos, eventos e notícias.
         </p>
     </div>
 </section>
@@ -150,9 +145,6 @@ include_once __DIR__ . '/includes/header.php';
             </div>
         <?php else: ?>
             <div class="bg-white rounded-3xl border border-slate-200/80 p-12 text-center max-w-2xl mx-auto shadow-clean space-y-4">
-                <div class="w-16 h-16 rounded-2xl bg-sky-100 text-azul-texto flex items-center justify-center text-3xl font-bold mx-auto">
-                    🔍
-                </div>
                 <h3 class="t-h3">
                     Nenhuma publicação encontrada
                 </h3>

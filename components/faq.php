@@ -2,7 +2,7 @@
 $faqs = [
     [
         'pergunta' => 'O que é o projeto Felicite-se?',
-        'resposta' => 'O Felicite-se é um <strong>projeto educacional do IFSul Campus Venâncio Aires</strong> focado no estudo e disseminação da Psicologia Positiva, da saúde mental e do florescimento humano.'
+        'resposta' => 'O Felicite-se é um <strong>projeto educacional do IFSul Campus Venâncio Aires</strong> focado no estudo e disseminação da Psicologia Positiva, da saúde mental.'
     ],
     [
         'pergunta' => 'Quem pode participar das oficinas e atividades?',
@@ -10,7 +10,7 @@ $faqs = [
     ],
     [
         'pergunta' => 'Como posso levar o projeto para a minha escola?',
-        'resposta' => 'Basta entrar em contacto através do <strong>nosso formulário de contacto</strong> para combinarmos o agendamento de palestras, oficinas vivenciais e minicursos.'
+        'resposta' => 'Basta entrar em contato através do <strong>nosso formulário de contato</strong> para combinarmos o agendamento de palestras, oficinas vivenciais e minicursos.'
     ],
     [
         'pergunta' => 'O conteúdo disponibilizado possui base científica?',

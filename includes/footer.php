@@ -20,7 +20,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
 
                 <div class="md:col-span-3 space-y-4">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">
-                        Navegação
+                        Páginas
                     </h3>
                     <ul class="space-y-2.5 text-sm font-semibold">
                         <li><a href="<?= $baseUrl ?>index.php" class="text-slate-600 hover:text-azul-felicite transition-colors">Início</a></li>

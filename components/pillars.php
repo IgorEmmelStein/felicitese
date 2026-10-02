@@ -21,7 +21,7 @@
                         Pesquisa Científica
                     </h3>
                     <p class="p-base">
-                        Fundamentação teórica baseada na Psicologia Positiva e nos <strong>estudos de Martin Seligman</strong> sobre o bem-estar e o florescimento humano.
+                        Fundamentação teórica baseada na Psicologia Positiva e nos <strong>estudos de Martin Seligman</strong> sobre o bem-estar.
                     </p>
                 </div>
             </div>

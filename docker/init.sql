@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Inserção de Categorias Padrão
 INSERT IGNORE INTO `categorias` (`id`, `nome`) VALUES
 (1, 'Psicologia e Saúde Mental'),
-(2, 'Vivências Lúdicas'),
+(2, 'Atividades'),
 (3, 'Artigos Científicos'),
 (4, 'Oficinas e Eventos');
 

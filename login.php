@@ -126,9 +126,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
             </div>
 
             <div class="relative z-10 max-w-lg space-y-6">
-                <span class="inline-flex items-center gap-2 bg-sky-950 text-sky-300 border border-sky-800/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                    ✨ ÁREA ADMINISTRATIVA • GESTÃO
-                </span>
+                
 
                 <h1 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
                     Um espaço seguro para cuidar da <span class="text-sky-300">mente</span>.
