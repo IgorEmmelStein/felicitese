@@ -33,12 +33,11 @@ CREATE TABLE IF NOT EXISTS `posts` (
     CONSTRAINT `fk_posts_autor` FOREIGN KEY (`autor_id`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserção de Categorias Padrão
 INSERT IGNORE INTO `categorias` (`id`, `nome`) VALUES
 (1, 'Psicologia e Saúde Mental'),
 (2, 'Atividades'),
 (3, 'Artigos Científicos'),
-(4, 'Oficinas e Eventos');
+(4, 'Eventos');
 
 -- Inserção do Usuário Administrador Padrão (login: admin@ifsul.edu.br / senha: admin123)
 INSERT IGNORE INTO `usuarios` (`id`, `nome`, `email`, `senha`, `funcao`) VALUES
