@@ -6,15 +6,20 @@ $pageTitle = "Felicite-se - Saúde Mental e Bem-Estar no Cotidiano Escolar";
 $mainClass = "landing-main bg-ink-50 text-ink-950";
 
 $recentPosts = [];
-/*
+
 if (class_exists('PostController')) {
-    $controller = new PostController();
-    if (method_exists($controller, 'listarRecentes')) {
-        $recentPosts = $controller->listarRecentes(3);
-    } elseif (method_exists($controller, 'getRecentPosts')) {
-        $recentPosts = $controller->getRecentPosts(3);
+    // Identifica a variável de conexão criada em config/conexao.php
+    $db = $pdo ?? $conexao ?? $conn ?? null;
+
+    if ($db) {
+        $controller = new PostController($db);
+        if (method_exists($controller, 'listarRecentes')) {
+            $recentPosts = $controller->listarRecentes(3);
+        } elseif (method_exists($controller, 'getRecentPosts')) {
+            $recentPosts = $controller->getRecentPosts(3);
+        }
     }
-}*/
+}
 
 include_once __DIR__ . '/includes/header.php';
 
