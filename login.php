@@ -218,7 +218,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                             <input type="checkbox" name="lembrar" checked class="rounded border-slate-300 text-azul-felicite focus:ring-azul-felicite">
                             <span>Lembrar de mim</span>
                         </label>
-                        <a href="#" onclick="alert('Para redefinir a senha do ambiente acadêmico/local, utilize o login padrão: igor@felicite-se.org (senha: 123456) ou admin@ifsul.edu.br (senha: admin123).'); return false;" class="text-azul-felicite hover:underline">
+                        <a href="alterar_senha.php" class="text-azul-felicite hover:underline">
                             Recuperar senha
                         </a>
                     </div>
@@ -232,9 +232,9 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                         <span class="relative bg-white px-4 text-xs font-bold uppercase tracking-wider text-slate-400">ou</span>
                     </div>
 
-                    <button type="button" onclick="alert('O cadastro de novos administradores pode ser realizado internamente pelo painel ou banco de dados.');" class="w-full py-3.5 rounded-full font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 transition-all text-sm">
+                    <a href="criar-usuario.php" class="block w-full py-3.5 rounded-full font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 transition-all text-sm text-center">
                         Criar Conta
-                    </button>
+                    </a>
 
                 </form>
 
