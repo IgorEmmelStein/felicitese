@@ -15,4 +15,4 @@ require_once __DIR__ . '/components/about-conceito.php';
 require_once __DIR__ . '/components/faq.php';
 
 include_once __DIR__ . '/includes/footer.php';
-?>
+?>  
