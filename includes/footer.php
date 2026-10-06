@@ -1,52 +1,60 @@
 <?php
 $baseUrl = defined('BASE_URL') ? BASE_URL : '';
+
+// Carrega os links centralizados
+$navItems = file_exists(__DIR__ . '/../config/navigation.php') 
+    ? require __DIR__ . '/../config/navigation.php' 
+    : [];
 ?>
     </main>
 
-    <footer class="bg-white border-t border-slate-200/80 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-200/80">
+    <footer class="bg-white border-t border-slate-200/80 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
                 
-                <div class="md:col-span-6 space-y-5">
+                <!-- Coluna 1: Sobre e Logo -->
+                <div class="md:col-span-2 space-y-4">
                     <a href="<?= $baseUrl ?>index.php" class="flex items-center gap-3">
                         <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-10 w-auto">
                         <span class="text-xl font-extrabold tracking-tight text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
                     </a>
-                    
-                    <p class="p-base max-w-md">
-                        Promovemos a <strong>saúde psicológica e inteligência emocional</strong> para estudantes e educadores através de conteúdos de confiança e acolhimento contínuo.
+                    <p class="text-sm text-slate-600 max-w-md leading-relaxed">
+                        Promovendo ações socioemocionais, saúde mental e desenvolvimento humano no ecossistema acadêmico do IFSul e comunidade escolar.
                     </p>
                 </div>
 
-                <div class="md:col-span-3 space-y-4">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">
-                        Páginas
-                    </h3>
-                    <ul class="space-y-2.5 text-sm font-semibold">
-                        <li><a href="<?= $baseUrl ?>index.php" class="text-slate-600 hover:text-azul-felicite transition-colors">Início</a></li>
-                        <li><a href="<?= $baseUrl ?>blog.php" class="text-slate-600 hover:text-azul-felicite transition-colors">Central de Conteúdo</a></li>
-                        <li><a href="<?= $baseUrl ?>sobre.php" class="text-slate-600 hover:text-azul-felicite transition-colors">Nossa História</a></li>
-                        <li><a href="<?= $baseUrl ?>login.php" class="text-slate-600 hover:text-azul-felicite transition-colors">Área do Membro</a></li>
+                <!-- Coluna 2: Navegação Dinâmica -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Navegação</h3>
+                    <ul class="space-y-2.5">
+                        <?php foreach ($navItems as $item): ?>
+                            <li>
+                                <a href="<?= $baseUrl . $item['url'] ?>" class="text-sm font-medium text-slate-600 hover:text-azul-felicite transition-colors">
+                                    <?= htmlspecialchars($item['label']) ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
 
-                <div class="md:col-span-3 space-y-4">
-                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">
-                        Contato
-                    </h3>
-                    <ul class="space-y-2 text-sm text-slate-600 font-medium">
-                        <li class="font-semibold text-slate-800">contato@felicite-se.org</li>
-                        <li>IFSul Câmpus Venâncio Aires</li>
-                        <li>Venâncio Aires, RS</li>
+                <!-- Coluna 3: Acesso Rápido -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Acesso Restrito</h3>
+                    <ul class="space-y-2.5">
+                        <li>
+                            <a href="<?= $baseUrl ?>login.php" class="text-sm font-medium text-slate-600 hover:text-azul-felicite transition-colors inline-flex items-center gap-1.5">
+                                Área do Membro &rarr;
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
             </div>
 
-            <div class="pt-8 text-center sm:text-left">
-                <p class="text-xs font-medium text-slate-500">
-                    &copy; 2026 Felicite-se. Projeto educacional de <strong>saúde mental e bem-estar</strong> vinculado ao IFSul.
-                </p>
+            <!-- Linha Inferior / Direitos -->
+            <div class="pt-8 mt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; <?= date('Y') ?> Projeto Felicite-se • IFSul Campus Venâncio Aires.</p>
+                <p>Desenvolvido com foco na saúde mental e bem-estar comunitário.</p>
             </div>
         </div>
     </footer>
