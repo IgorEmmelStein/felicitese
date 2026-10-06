@@ -97,8 +97,7 @@ try {
             (1, 'Psicologia e Saúde Mental'),
             (2, 'Atividades'),
             (3, 'Artigos Científicos'),
-            (4, 'Oficinas e Eventos')");
+            (4, 'Eventos')");
     }
 } catch (Exception $e) {
-    // Continua caso já existam restrições
 }
