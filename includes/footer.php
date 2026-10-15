@@ -16,7 +16,7 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
                 <div class="md:col-span-2 space-y-4">
                     <a href="<?= $baseUrl ?>index.php" class="flex items-center gap-3">
                         <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-10 w-auto">
-                        <span class="text-xl font-extrabold tracking-tight text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900">Felicite<span class="text-purple">-se</span></span>
                     </a>
                     <p class="text-sm text-slate-600 max-w-md leading-relaxed">
                         Promovendo ações socioemocionais, saúde mental e desenvolvimento humano no ecossistema acadêmico do IFSul e comunidade escolar.
@@ -29,7 +29,7 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
                     <ul class="space-y-2.5">
                         <?php foreach ($navItems as $item): ?>
                             <li>
-                                <a href="<?= $baseUrl . $item['url'] ?>" class="text-sm font-medium text-slate-600 hover:text-azul-felicite transition-colors">
+                                <a href="<?= $baseUrl . $item['url'] ?>" class="text-sm font-medium text-slate-600 hover:text-purple transition-colors">
                                     <?= htmlspecialchars($item['label']) ?>
                                 </a>
                             </li>
@@ -42,7 +42,7 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Acesso Restrito</h3>
                     <ul class="space-y-2.5">
                         <li>
-                            <a href="<?= $baseUrl ?>login.php" class="text-sm font-medium text-slate-600 hover:text-azul-felicite transition-colors inline-flex items-center gap-1.5">
+                            <a href="<?= $baseUrl ?>login.php" class="text-sm font-medium text-slate-600 hover:text-purple transition-colors inline-flex items-center gap-1.5">
                                 Área do Membro &rarr;
                             </a>
                         </li>
