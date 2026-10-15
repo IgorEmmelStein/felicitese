@@ -277,7 +277,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
     <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-fundo-app">
 
         <!-- Coluna Esquerda - Banner -->
-        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-azul-hover text-white p-12 flex-col justify-between relative overflow-hidden">
+        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-hover text-white p-12 flex-col justify-between relative overflow-hidden">
             <div class="relative z-10">
                 <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                     <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
@@ -287,7 +287,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
 
             <div class="relative z-10 max-w-lg space-y-6">
                 <h1 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
-                    Faça parte do <span class="text-sky-300">Clube Felicite-se</span>.
+                    Faça parte do <span class="text-purple-300">Clube Felicite-se</span>.
                 </h1>
 
                 <p class="p-base text-slate-200">
@@ -308,7 +308,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                     <div class="lg:hidden mb-6">
                         <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-2">
                             <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
-                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-purple">-se</span></span>
                         </a>
                     </div>
 
@@ -320,7 +320,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                     <?php elseif ($etapa === 'verificacao'): ?>
                         <h2 class="t-h2 text-slate-900 text-2xl font-bold">Verificar E-mail</h2>
                         <p class="p-base text-sm text-slate-500">
-                            Enviamos um código de 6 dígitos para <strong class="text-azul-felicite"><?= htmlspecialchars($emailPendente) ?></strong>. Insira-o abaixo para confirmar.
+                            Enviamos um código de 6 dígitos para <strong class="text-purple"><?= htmlspecialchars($emailPendente) ?></strong>. Insira-o abaixo para confirmar.
                         </p>
                     <?php elseif ($etapa === 'sucesso'): ?>
                         <div class="flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mx-auto mb-2">
@@ -362,7 +362,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                                 required
                                 placeholder="Seu nome completo"
                                 value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>"
-                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
@@ -382,7 +382,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                                 required
                                 placeholder="seuemail@felicite-se.org"
                                 value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
@@ -402,7 +402,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                                 required
                                 minlength="6"
                                 placeholder="••••••••"
-                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                 <path d="M7 11V7a5 5 0 0110 0v4"></path>
@@ -430,7 +430,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                                 required
                                 minlength="6"
                                 placeholder="••••••••"
-                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
@@ -443,7 +443,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm mt-4">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm mt-4">
                         Enviar Código de Verificação
                     </button>
                 </form>
@@ -469,7 +469,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                                 pattern="[0-9]{6}"
                                 placeholder="000000"
                                 autocomplete="one-time-code"
-                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm font-mono tracking-[0.3em] text-center focus:outline-none focus:border-azul-felicite focus:bg-white transition-all text-lg">
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm font-mono tracking-[0.3em] text-center focus:outline-none focus:border-purple focus:bg-white transition-all text-lg">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                             </svg>
@@ -477,7 +477,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                         <span class="text-[11px] text-slate-400 mt-1 block">Verifique sua caixa de entrada e a pasta de spam.</span>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm">
                         Confirmar e Criar Conta
                     </button>
                 </form>
@@ -486,7 +486,7 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
                 <div class="flex items-center justify-between gap-2">
                     <form action="criar-usuario.php" method="POST" class="inline">
                         <input type="hidden" name="acao" value="reenviar_codigo">
-                        <button type="submit" class="text-xs font-bold text-azul-felicite hover:underline transition-colors">
+                        <button type="submit" class="text-xs font-bold text-purple hover:underline transition-colors">
                             Reenviar código
                         </button>
                     </form>
@@ -501,14 +501,14 @@ $emailPendente = $_SESSION['cadastro_pendente']['email'] ?? '';
 
                 <!-- ═══════════ ETAPA 3: Sucesso ═══════════ -->
                 <?php if ($etapa === 'sucesso'): ?>
-                <a href="login.php" class="block w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm text-center">
+                <a href="login.php" class="block w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm text-center">
                     Ir para o Login
                 </a>
                 <?php endif; ?>
 
                 <!-- Link de volta -->
                 <div class="pt-2 text-center flex flex-col gap-2">
-                    <a href="login.php" class="text-xs font-bold text-slate-500 hover:text-azul-felicite transition-colors inline-flex items-center justify-center gap-1">
+                    <a href="login.php" class="text-xs font-bold text-slate-500 hover:text-purple transition-colors inline-flex items-center justify-center gap-1">
                         &larr; Voltar para a Tela de Login
                     </a>
                 </div>
