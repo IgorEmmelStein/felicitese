@@ -23,10 +23,31 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
         theme: {
           extend: {
             colors: {
-              'azul-felicite': '#005691',
-              'azul-hover': '#003e6b',
-              'azul-suave': '#e0f2fe',
-              'azul-texto': '#0369a1',
+              purple: {
+                DEFAULT: 'var(--purple, #7c3aed)',
+                hover: 'var(--purple-hover, #5e2bb6)',
+                suave: 'var(--purple-suave, #e7dbfc)',
+                texto: 'var(--purple-texto, #8a5dd8)',
+                50: '#faf5ff',
+                100: '#f3e8ff',
+                200: '#e9d5ff',
+                300: '#d8b4fe',
+                400: '#c084fc',
+                500: '#a855f7',
+                600: '#9333ea',
+                700: '#7e22ce',
+                800: '#6b21a8',
+                900: '#581c87',
+                950: '#3b0764'
+              },
+              'purple-hover': 'var(--purple-hover, #5e2bb6)',
+              'purple-suave': 'var(--purple-suave, #e7dbfc)',
+              'purple-texto': 'var(--purple-texto, #8a5dd8)',
+              'badge-purple': 'var(--badge-purple, #7c3aed)',
+              'azul-felicite': 'var(--purple, #7c3aed)',
+              'azul-hover': 'var(--purple-hover, #5e2bb6)',
+              'azul-suave': 'var(--purple-suave, #e7dbfc)',
+              'azul-texto': 'var(--purple-texto, #8a5dd8)',
               'fundo-app': '#f8fafc'
             }
           }
@@ -42,41 +63,48 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
             <!-- Logo -->
             <a href="<?= $baseUrl ?>index.php" class="flex items-center gap-3">
                 <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-10 w-auto">
-                <span class="text-xl font-extrabold tracking-tight text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                <span class="text-xl font-extrabold tracking-tight text-slate-900">Felicite<span class="text-purple">-se</span></span>
             </a>
 
-            <!-- Navegação Desktop -->
-            <nav class="hidden md:flex items-center gap-2 sm:gap-3">
-                <?php foreach ($navItems as $item): ?>
-                    <a href="<?= $baseUrl . $item['url'] ?>" class="text-sm font-semibold text-slate-600 hover:text-azul-felicite px-3 py-2 transition-colors">
-                        <?= htmlspecialchars($item['label']) ?>
+            <!-- Navegação Desktop e Logo Direito -->
+            <div class="hidden md:flex items-center gap-4 sm:gap-6">
+                <nav class="flex items-center gap-2 sm:gap-3">
+                    <?php foreach ($navItems as $item): ?>
+                        <a href="<?= $baseUrl . $item['url'] ?>" class="text-sm font-semibold text-slate-600 hover:text-purple px-3 py-2 transition-colors">
+                            <?= htmlspecialchars($item['label']) ?>
+                        </a>
+                    <?php endforeach; ?>
+
+                    <a href="<?= $baseUrl ?>login.php" class="ml-2 text-sm font-semibold text-white !bg-purple hover:bg-purple-hover px-5 py-2.5 rounded-full shadow-sm transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Área do Membro
                     </a>
-                <?php endforeach; ?>
+                </nav>
+            </div>
 
-                <a href="<?= $baseUrl ?>login.php" class="ml-2 text-sm font-semibold text-white bg-azul-felicite hover:bg-azul-hover px-5 py-2.5 rounded-full shadow-sm transition-all flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                    Área do Membro
+            <!-- Área Direita Mobile (Logo + Botão Menu) -->
+            <div class="flex md:hidden items-center gap-3">
+                <a href="<?= $baseUrl ?>index.php" class="flex items-center" title="Projeto Felicite-se">
+                    <img src="<?= $baseUrl ?>assets/images/felicitese-logo.png" alt="Logo Projeto Felicite-se" class="h-9 w-auto object-contain">
                 </a>
-            </nav>
-
-            <!-- Botão de Abertura do Menu Mobile -->
-            <button 
-                id="btn-open-mobile"
-                type="button" 
-                class="md:hidden p-2.5 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
-                aria-label="Abrir Menu"
-            >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+                <button 
+                    id="btn-open-mobile"
+                    type="button" 
+                    class="p-2.5 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
+                    aria-label="Abrir Menu"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Drawer do Menu Mobile (Oculto por padrão com 'hidden') -->
     <div id="mobile-menu-wrapper" class="hidden fixed inset-0 z-50 md:hidden">
-        <!-- Fundo Escuro Semi-transparente -->
-        <div id="btn-close-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+        <!-- Fundo Roxo Semi-transparente (-purple) -->
+        <div id="btn-close-backdrop" class="fixed inset-0 bg-purple/60 backdrop-blur-sm transition-opacity" style="background-color: color-mix(in srgb, var(--purple, #7c3aed) 60%, transparent);"></div>
 
         <!-- Painel Lateral / Gaveta -->
         <div class="fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl flex flex-col justify-between p-6 z-10 transition-transform">
@@ -94,7 +122,7 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
                 <!-- Links de Navegação Mobile -->
                 <nav class="flex flex-col space-y-1">
                     <?php foreach ($navItems as $item): ?>
-                        <a href="<?= $baseUrl . $item['url'] ?>" class="text-base font-semibold text-slate-700 hover:text-azul-felicite hover:bg-slate-50 px-4 py-3 rounded-xl transition-all">
+                        <a href="<?= $baseUrl . $item['url'] ?>" class="text-base font-semibold text-slate-700 hover:text-purple hover:bg-slate-50 px-4 py-3 rounded-xl transition-all">
                             <?= htmlspecialchars($item['label']) ?>
                         </a>
                     <?php endforeach; ?>
@@ -103,7 +131,7 @@ $navItems = file_exists(__DIR__ . '/../config/navigation.php')
 
             <!-- Rodapé do Drawer Mobile -->
             <div class="pt-6 border-t border-slate-100 space-y-3">
-                <a href="<?= $baseUrl ?>login.php" class="w-full text-center text-sm font-bold text-white bg-azul-felicite hover:bg-azul-hover py-3 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+                <a href="<?= $baseUrl ?>login.php" class="w-full text-center text-sm font-bold text-white bg-purple hover:bg-purple-hover py-3 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     Área do Membro
                 </a>
