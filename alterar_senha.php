@@ -268,7 +268,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
     <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-fundo-app">
 
         <!-- Coluna Esquerda - Banner -->
-        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-azul-hover text-white p-12 flex-col justify-between relative overflow-hidden">
+        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-hover text-white p-12 flex-col justify-between relative overflow-hidden">
             <div class="relative z-10">
                 <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                     <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
@@ -278,7 +278,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
 
             <div class="relative z-10 max-w-lg space-y-6">
                 <h1 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
-                    Recupere o <span class="text-sky-300">acesso</span> à sua conta.
+                    Recupere o <span class="text-purple-300">acesso</span> à sua conta.
                 </h1>
 
                 <p class="p-base text-slate-200">
@@ -299,7 +299,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                     <div class="lg:hidden mb-6">
                         <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-2">
                             <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
-                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-purple">-se</span></span>
                         </a>
                     </div>
 
@@ -312,7 +312,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                         for ($i = 1; $i <= 3; $i++):
                             $ativa = $i <= $etapaAtual;
                         ?>
-                            <div class="flex-1 h-1.5 rounded-full <?= $ativa ? 'bg-azul-felicite' : 'bg-slate-200' ?> transition-all"></div>
+                            <div class="flex-1 h-1.5 rounded-full <?= $ativa ? 'bg-purple' : 'bg-slate-200' ?> transition-all"></div>
                         <?php endfor; ?>
                     </div>
                     <?php endif; ?>
@@ -324,8 +324,8 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                         </p>
 
                     <?php elseif ($etapa === 'enviado'): ?>
-                        <div class="flex items-center justify-center w-16 h-16 bg-azul-suave rounded-full mx-auto mb-2">
-                            <svg class="w-8 h-8 text-azul-felicite" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center justify-center w-16 h-16 bg-purple-suave rounded-full mx-auto mb-2">
+                            <svg class="w-8 h-8 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
@@ -338,7 +338,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                         <h2 class="t-h2 text-slate-900 text-2xl font-bold">Nova Senha</h2>
                         <p class="p-base text-sm text-slate-500">
                             <?php if ($nomeUsuario): ?>
-                                Olá <strong class="text-azul-felicite"><?= htmlspecialchars($nomeUsuario) ?></strong>! Defina a sua nova senha de acesso.
+                                Olá <strong class="text-purple"><?= htmlspecialchars($nomeUsuario) ?></strong>! Defina a sua nova senha de acesso.
                             <?php else: ?>
                                 Defina a sua <strong>nova senha de acesso</strong>.
                             <?php endif; ?>
@@ -384,14 +384,14 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                                 autofocus
                                 placeholder="seuemail@felicite-se.org"
                                 value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm">
                         Enviar Link de Recuperação
                     </button>
                 </form>
@@ -411,7 +411,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                         </div>
                         <div class="bg-white rounded-xl p-3 border border-amber-200">
                             <p class="text-[11px] text-slate-500 mb-1.5 font-semibold">Clique no link abaixo ou copie para o navegador:</p>
-                            <a href="<?= htmlspecialchars($linkRecuperacao) ?>" class="text-xs text-azul-felicite hover:underline font-mono break-all leading-relaxed block">
+                            <a href="<?= htmlspecialchars($linkRecuperacao) ?>" class="text-xs text-purple hover:underline font-mono break-all leading-relaxed block">
                                 <?= htmlspecialchars($linkRecuperacao) ?>
                             </a>
                         </div>
@@ -431,7 +431,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
 
                         <form action="alterar_senha.php" method="POST" class="inline">
                             <input type="hidden" name="acao" value="reenviar">
-                            <button type="submit" class="text-xs font-bold text-azul-felicite hover:underline transition-colors">
+                            <button type="submit" class="text-xs font-bold text-purple hover:underline transition-colors">
                                 Enviar novamente para outro e-mail
                             </button>
                         </form>
@@ -457,7 +457,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                                 minlength="6"
                                 autofocus
                                 placeholder="••••••••"
-                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
@@ -484,7 +484,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                                 required
                                 minlength="6"
                                 placeholder="••••••••"
-                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all">
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all">
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
@@ -497,7 +497,7 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm mt-2">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm mt-2">
                         Salvar Nova Senha
                     </button>
                 </form>
@@ -505,14 +505,14 @@ $nomeUsuario = $_SESSION['recuperacao_nome'] ?? '';
 
                 <!-- ═══════════ ETAPA 4: Sucesso ═══════════ -->
                 <?php if ($etapa === 'sucesso'): ?>
-                <a href="login.php" class="block w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm text-center">
+                <a href="login.php" class="block w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm text-center">
                     Ir para o Login
                 </a>
                 <?php endif; ?>
 
                 <!-- Link de volta -->
                 <div class="pt-2 text-center flex flex-col gap-2">
-                    <a href="login.php" class="text-xs font-bold text-slate-500 hover:text-azul-felicite transition-colors inline-flex items-center justify-center gap-1">
+                    <a href="login.php" class="text-xs font-bold text-slate-500 hover:text-purple transition-colors inline-flex items-center justify-center gap-1">
                         &larr; Voltar para a Tela de Login
                     </a>
                 </div>
