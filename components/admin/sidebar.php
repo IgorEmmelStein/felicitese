@@ -7,8 +7,8 @@
     <div>
         <!-- Brand Header -->
         <div class="admin-sidebar-header">
-            <a href="../../blog.php" class="brand-logo" title="Ir para o Portal Felicite-se">
-                <img src="../../assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
+            <a href="../blog.php" class="brand-logo" title="Ir para o Portal Felicite-se">
+                <img src="../assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="brand-logo-img">
                 <span class="brand-text">Felicite<span class="brand-dash">-</span><span class="brand-accent">se</span></span>
             </a>
         </div>
