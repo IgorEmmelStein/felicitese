@@ -35,7 +35,7 @@ try {
 }
 
 if (isset($_SESSION['usuario_id'])) {
-    header('Location: views/admin/index.php');
+    header('Location: admin/index.php');
     exit;
 }
 
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_funcao'] = $usuario['funcao'] ?? 'Administrador';
 
-                header('Location: views/admin/index.php');
+                header('Location: admin/index.php');
                 exit;
             } else {
                 $erro = "E-mail ou senha incorretos. Verifique suas credenciais de acesso.";
@@ -117,7 +117,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
 
     <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-fundo-app">
         
-        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-azul-hover text-white p-12 flex-col justify-between relative overflow-hidden">
+        <div class="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-slate-900 via-slate-900 to-purple-hover text-white p-12 flex-col justify-between relative overflow-hidden">
             <div class="relative z-10">
                 <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                     <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
@@ -129,7 +129,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                 
 
                 <h1 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
-                    Um espaço seguro para cuidar da <span class="text-sky-300">mente</span>.
+                    Um espaço seguro para cuidar da <span class="text-purple-300">mente</span>.
                 </h1>
 
                 <p class="p-base text-slate-200">
@@ -149,7 +149,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                     <div class="lg:hidden mb-6">
                         <a href="<?= $baseUrl ?>index.php" class="inline-flex items-center gap-2">
                             <img src="<?= $baseUrl ?>assets/images/felicitese-logo-2.png" alt="Logo Felicite-se" class="h-8 w-auto">
-                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-azul-felicite">-se</span></span>
+                            <span class="text-lg font-extrabold text-slate-900">Felicite<span class="text-purple">-se</span></span>
                         </a>
                     </div>
                     <h2 class="t-h2 text-slate-900">Bem-vindo de volta</h2>
@@ -178,7 +178,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                                 value="igor@felicite-se.org" 
                                 required 
                                 placeholder="seuemail@felicite-se.org" 
-                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all"
+                                class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all"
                             >
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -198,7 +198,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                                 value="123456" 
                                 required 
                                 placeholder="••••••••" 
-                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-azul-felicite focus:bg-white transition-all"
+                                class="w-full pl-11 pr-11 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:border-purple focus:bg-white transition-all"
                             >
                             <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -215,15 +215,15 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
 
                     <div class="flex items-center justify-between text-xs font-semibold">
                         <label class="inline-flex items-center gap-2 cursor-pointer text-slate-600">
-                            <input type="checkbox" name="lembrar" checked class="rounded border-slate-300 text-azul-felicite focus:ring-azul-felicite">
+                            <input type="checkbox" name="lembrar" checked class="rounded border-slate-300 text-purple focus:ring-purple">
                             <span>Lembrar de mim</span>
                         </label>
-                        <a href="alterar_senha.php" class="text-azul-felicite hover:underline">
+                        <a href="alterar_senha.php" class="text-purple hover:underline">
                             Recuperar senha
                         </a>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover shadow-sm transition-all text-sm">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white bg-purple hover:bg-purple-hover shadow-sm transition-all text-sm">
                         Entrar no Painel
                     </button>
 
@@ -239,7 +239,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                 </form>
 
                 <div class="pt-2 text-center">
-                    <a href="blog.php" class="text-xs font-bold text-slate-500 hover:text-azul-felicite transition-colors inline-flex items-center gap-1">
+                    <a href="blog.php" class="text-xs font-bold text-slate-500 hover:text-purple transition-colors inline-flex items-center gap-1">
                         &larr; Voltar para o Site Público
                     </a>
                 </div>
