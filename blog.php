@@ -14,12 +14,12 @@ $posts = $controller->listarPublicos($busca, $categoriaId);
 
 function getBadgeClass($nomeCategoria) {
     $nome = mb_strtolower(trim($nomeCategoria ?? ''));
-    if (strpos($nome, 'artigo') !== false) return 'bg-sky-100 text-sky-800 border-sky-200';
+    if (strpos($nome, 'artigo') !== false) return 'bg-purple-100 text-purple-800 border-purple-200';
     if (strpos($nome, 'evento') !== false) return 'bg-amber-100 text-amber-800 border-amber-200';
     if (strpos($nome, 'notícia') !== false || strpos($nome, 'noticia') !== false) return 'bg-purple-100 text-purple-800 border-purple-200';
     if (strpos($nome, 'psicologia') !== false || strpos($nome, 'mente') !== false) return 'bg-emerald-100 text-emerald-800 border-emerald-200';
     if (strpos($nome, 'vivência') !== false || strpos($nome, 'vivencia') !== false || strpos($nome, 'lúdica') !== false) return 'bg-orange-100 text-orange-800 border-orange-200';
-    return 'bg-sky-100 text-sky-800 border-sky-200';
+    return 'bg-purple-100 text-purple-800 border-purple-200';
 }
 
 function getTempoLeitura($texto, $id) {
@@ -43,7 +43,7 @@ include_once __DIR__ . '/includes/header.php';
 <section class="py-16 lg:py-20 bg-white border-b border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-4">
         <h1 class="t-h1">
-            Central de <span class="text-azul-felicite">Conteúdo</span>
+            Central de <span class="text-purple">Conteúdo</span>
         </h1>
         <p class="p-base">
             Explore artigos, eventos e notícias.
@@ -60,7 +60,7 @@ include_once __DIR__ . '/includes/header.php';
                     name="busca" 
                     placeholder="Buscar por tema, palavra-chave..." 
                     value="<?= htmlspecialchars($busca) ?>"
-                    class="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200/80 rounded-full text-slate-900 text-sm focus:outline-none focus:border-azul-felicite shadow-clean transition-all"
+                    class="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200/80 rounded-full text-slate-900 text-sm focus:outline-none focus:border-purple shadow-clean transition-all"
                     aria-label="Buscar publicações"
                 >
                 <svg class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,12 +73,12 @@ include_once __DIR__ . '/includes/header.php';
 
             <div class="flex flex-wrap items-center justify-center gap-2">
                 <a href="blog.php<?= !empty($busca) ? '?busca=' . urlencode($busca) : '' ?>" 
-                   class="px-5 py-2 rounded-full text-xs font-bold transition-all <?= empty($categoriaId) ? 'bg-azul-felicite text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80' ?>">
+                   class="px-5 py-2 rounded-full text-xs font-bold transition-all <?= empty($categoriaId) ? 'bg-purple text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80' ?>">
                     Todos
                 </a>
                 <?php foreach ($categorias as $cat): ?>
                     <a href="blog.php?categoria=<?= $cat['id'] ?><?= !empty($busca) ? '&busca=' . urlencode($busca) : '' ?>" 
-                       class="px-5 py-2 rounded-full text-xs font-bold transition-all <?= ($categoriaId == $cat['id']) ? 'bg-azul-felicite text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80' ?>">
+                       class="px-5 py-2 rounded-full text-xs font-bold transition-all <?= ($categoriaId == $cat['id']) ? 'bg-purple text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80' ?>">
                         <?= htmlspecialchars($cat['nome']) ?>
                     </a>
                 <?php endforeach; ?>
@@ -101,7 +101,7 @@ include_once __DIR__ . '/includes/header.php';
                     $badgeClass = getBadgeClass($post['categoria_nome'] ?? 'Artigos Científicos');
                     $tempoLeitura = getTempoLeitura($post['conteudo'], $post['id']);
                     ?>
-                    <article class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-clean hover:border-sky-300 transition-all flex flex-col justify-between group">
+                    <article class="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-clean hover:border-purple-300 transition-all flex flex-col justify-between group">
                         <a href="artigo.php?id=<?= $post['id'] ?>" class="flex flex-col h-full">
                             <div class="relative aspect-video w-full overflow-hidden bg-slate-100 p-3">
                                 <span class="absolute top-5 left-5 z-10 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border <?= $badgeClass ?>">
@@ -118,7 +118,7 @@ include_once __DIR__ . '/includes/header.php';
 
                             <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
                                 <div class="space-y-2">
-                                    <h3 class="t-h3 group-hover:text-azul-felicite transition-colors">
+                                    <h3 class="t-h3 group-hover:text-purple transition-colors">
                                         <?= htmlspecialchars($post['titulo']) ?>
                                     </h3>
                                     <p class="p-base text-sm line-clamp-3">
@@ -134,7 +134,7 @@ include_once __DIR__ . '/includes/header.php';
                                         </svg>
                                         Leitura de <?= $tempoLeitura ?> min
                                     </span>
-                                    <span class="text-azul-felicite font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                    <span class="text-purple font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                                         Ler artigo &rarr;
                                     </span>
                                 </div>
@@ -152,7 +152,7 @@ include_once __DIR__ . '/includes/header.php';
                     Não encontramos artigos para os termos ou categorias pesquisadas. Tente <strong>limpar os filtros de busca</strong> para visualizar todo o acervo.
                 </p>
                 <div class="pt-2">
-                    <a href="blog.php" class="inline-flex justify-center items-center px-7 py-3.5 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover transition-all">
+                    <a href="blog.php" class="inline-flex justify-center items-center px-7 py-3.5 rounded-full font-bold text-white bg-purple hover:bg-purple-hover transition-all">
                         Ver Todas as Publicações
                     </a>
                 </div>
