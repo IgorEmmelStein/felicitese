@@ -25,7 +25,7 @@ if (!$artigo) {
                     O artigo que procura pode ter sido <strong>removido ou o link inserido é inválido</strong>.
                 </p>
                 <div class="pt-2">
-                    <a href="blog.php" class="inline-flex justify-center items-center px-7 py-3.5 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover transition-all">
+                    <a href="blog.php" class="inline-flex justify-center items-center px-7 py-3.5 rounded-full font-bold text-white bg-purple hover:bg-purple-hover transition-all">
                         &larr; Voltar para a Central de Conteúdo
                     </a>
                 </div>
@@ -50,12 +50,12 @@ $srcImagem = $temImagem
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
         <div class="space-y-4">
-            <a href="blog.php" class="inline-flex items-center gap-2 text-xs font-bold text-azul-felicite hover:text-azul-hover transition-colors">
+            <a href="blog.php" class="inline-flex items-center gap-2 text-xs font-bold text-purple hover:text-purple-hover transition-colors">
                 &larr; Voltar para a Central de Conteúdo
             </a>
 
             <div class="flex flex-wrap items-center gap-3 pt-2">
-                <a href="blog.php?categoria=<?= (int)$artigo['categoria_id'] ?>" class="inline-flex items-center bg-sky-100 text-azul-texto border border-sky-200/60 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-sky-200 transition-colors">
+                <a href="blog.php?categoria=<?= (int)$artigo['categoria_id'] ?>" class="inline-flex items-center bg-purple-100 text-purple-texto border border-purple-200/60 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-purple-200 transition-colors">
                     <?= htmlspecialchars($artigo['categoria_nome'] ?? 'Geral') ?>
                 </a>
                 <span class="text-xs font-semibold text-slate-500 inline-flex items-center gap-1.5">
@@ -88,16 +88,16 @@ $srcImagem = $temImagem
             <div class="text-slate-700 p-base leading-relaxed space-y-4 [&>p]:mb-4 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-slate-900 [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-slate-900 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5">
                 <?php
                 $conteudoFormatado = strip_tags($artigo['conteudo'], '<p><br><strong><b><em><i><u><a><ul><ol><li><h2><h3>');
-                $conteudoFormatado = preg_replace('/<a\s+(?!.*?target=)/i', '<a target="_blank" rel="noopener noreferrer" class="text-azul-felicite font-semibold underline" ', $conteudoFormatado);
+                $conteudoFormatado = preg_replace('/<a\s+(?!.*?target=)/i', '<a target="_blank" rel="noopener noreferrer" class="text-purple font-semibold underline" ', $conteudoFormatado);
                 echo $conteudoFormatado;
                 ?>
             </div>
 
             <?php if (!empty($artigo['pdf_anexo'])): ?>
                 <div class="pt-6 border-t border-slate-100">
-                    <div class="p-6 bg-sky-50/80 border border-sky-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="p-6 bg-purple-50/80 border border-purple-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div class="space-y-1">
-                            <span class="text-xs font-bold uppercase tracking-wider text-azul-texto block">
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-texto block">
                                 📄 MATERIAL CIENTÍFICO ANEXO
                             </span>
                             <h3 class="t-h3 text-slate-900">
@@ -107,7 +107,7 @@ $srcImagem = $temImagem
                                 Aceda ao documento original para <strong>aprofundamento da pesquisa acadêmica</strong>.
                             </p>
                         </div>
-                        <a href="uploads/pdfs/<?= htmlspecialchars($artigo['pdf_anexo']) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-azul-felicite hover:bg-azul-hover transition-all text-xs flex-shrink-0 shadow-sm">
+                        <a href="uploads/pdfs/<?= htmlspecialchars($artigo['pdf_anexo']) ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-purple hover:bg-purple-hover transition-all text-xs flex-shrink-0 shadow-sm">
                             Baixar PDF
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         </a>
