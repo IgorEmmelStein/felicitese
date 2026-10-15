@@ -23,14 +23,14 @@ if (class_exists('PostController')) {
 
 include_once __DIR__ . '/includes/header.php';
 
-require_once __DIR__ . '/components/hero.php';
-require_once __DIR__ . '/components/pillars.php';
-require_once __DIR__ . '/components/reflection.php';
-require_once __DIR__ . '/components/posts.php';
-require_once __DIR__ . '/components/social-proof.php';
-require_once __DIR__ . '/components/about-teaser.php';
-require_once __DIR__ . '/components/faq.php';
-require_once __DIR__ . '/components/cta-banner.php';
+require_once __DIR__ . '/components/public/hero.php';
+require_once __DIR__ . '/components/public/pillars.php';
+require_once __DIR__ . '/components/public/reflection.php';
+require_once __DIR__ . '/components/public/posts.php';
+require_once __DIR__ . '/components/public/social-proof.php';
+require_once __DIR__ . '/components/public/about-teaser.php';
+require_once __DIR__ . '/components/public/faq.php';
+require_once __DIR__ . '/components/public/cta-banner.php';
 
 include_once __DIR__ . '/includes/footer.php';
 ?>
