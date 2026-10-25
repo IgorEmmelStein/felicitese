@@ -218,7 +218,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                             <input type="checkbox" name="lembrar" checked class="rounded border-slate-300 text-purple focus:ring-purple">
                             <span>Lembrar de mim</span>
                         </label>
-                        <a href="alterar_senha.php" class="text-purple hover:underline">
+                        <a href="alterar_senha.php" onclick="alert('Para alterar ou recuperar sua senha, por favor solicite ao administrador do site.'); return false;" class="text-purple hover:underline">
                             Recuperar senha
                         </a>
                     </div>

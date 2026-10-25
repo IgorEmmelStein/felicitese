@@ -1,5 +1,6 @@
 <?php
 $heroImages = [
+    'assets/images/estudantes/felicitese-equipe-sala-com-jogos.jpeg',
     'assets/images/estudantes/felicitese-apresentacao-estacoes-vivenciais-rodada-oficinas.webp',
     'assets/images/estudantes/felicitese-acao-social-parceiros-da-esperanca-estudantes.webp',
     'assets/images/estudantes/felicitese-aluna-orientadora-congresso-felicidade-aplicada.webp',
